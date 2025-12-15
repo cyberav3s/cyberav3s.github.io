@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burge Design | App Developer Portfolio</title>
+    <style>
+        /* --- RESET & VARIABLES --- */
+        :root {
+            --bg-body: #000000;
+            --bg-card: #1c1c1e;
+            --bg-card-hover: #2c2c2e;
+            --text-main: #f5f5f7;
+            --text-muted: #86868b;
+            --accent-color: #0a84ff; /* Apple System Blue */
+            --radius: 20px;
+            --padding-section: 80px 20px;
+            --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-stack);
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.5;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- HEADER --- */
+        header {
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-left: 24px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--text-main); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            text-align: center;
+            padding: 120px 20px 80px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #ffffff 0%, #a5a5a5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-weight: 400;
+        }
+
+        /* --- PROJECTS GRID (BENTO STYLE) --- */
+        .projects-section {
+            padding: var(--padding-section);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 350px;
+            transition: var(--transition);
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .card:hover {
+            background-color: var(--bg-card-hover);
+            transform: scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #333, #555);
+            border-radius: 14px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        /* Custom Project Colors */
+        .p1 .card-icon { background: linear-gradient(135deg, #FF9F0A, #FF453A); }
+        .p2 .card-icon { background: linear-gradient(135deg, #30D158, #0A84FF); }
+        .p3 .card-icon { background: linear-gradient(135deg, #BF5AF2, #5E5CE6); }
+        .p4 .card-icon { background: linear-gradient(135deg, #64D2FF, #0A84FF); }
+
+        .card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .card-content p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        .card-arrow {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            opacity: 0;
+            transition: var(--transition);
+            color: var(--accent-color);
+        }
+
+        .card:hover .card-arrow {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+
+        /* --- CTA SECTION --- */
+        .cta {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(180deg, var(--bg-body) 0%, #111 100%);
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background-color: #007aff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(10, 132, 255, 0.3);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .social-links a {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            transition: color 0.2s;
+            font-weight: 500;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            color: #424245;
+            font-size: 0.8rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.2rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Burge Design</div>
+                <div class="nav-links">
+                    <a href="#projects">Work</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Crafting digital<br>experiences.</h1>
+            <p>Premium mobile applications designed with precision, utility, and human-centric interfaces.</p>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title">Selected Work</h2>
+            <div class="grid">
+                <div class="card p1">
+                    <div class="card-icon">💪</div>
+                    <div class="card-content">
+                        <h3>FitTrack Pro</h3>
+                        <p>A comprehensive fitness tracker using HealthKit integration and real-time analytics.</p>
+                    </div>
+                    <span class="card-arrow">View Case →</span>
+                </div>
+
+                <div class="card p2">
+                    <div class="card-icon">💰</div>
+                    <div class="card-content">
+                        <h3>CoinFlow</h3>
+                        <p>Personal finance manager featuring secure banking APIs and predictive budgeting.</p>
+                    </div>
+                    <span class="card-arrow">View Case →</span>
+                </div>
+
+                <div class="card p3">
+                    <div class="card-icon">📷</div>
+                    <div class="card-content">
+                        <h3>Luma Edit</h3>
+                        <p>Raw photo editor with non-destructive workflow and custom Metal rendering engine.</p>
+                    </div>
+                    <span class="card-arrow">View Case →</span>
+                </div>
+
+                <div class="card p4">
+                    <div class="card-icon">🎧</div>
+                    <div class="card-content">
+                        <h3>Sonic Wave</h3>
+                        <p>High-fidelity music player with spatial audio support and social listening rooms.</p>
+                    </div>
+                    <span class="card-arrow">View Case →</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="cta">
+        <div class="container">
+            <h2>Ready to build something amazing?</h2>
+            <a href="mailto:contact@burgedesign.com" class="btn">Connect with us</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#">Dribbble</a>
+                <a href="#">Behance</a>
+                <a href="#">Google Play</a>
+                <a href="#">Twitter</a>
+            </div>
+            <p class="copyright">@2025 copyright by Burge Design.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
