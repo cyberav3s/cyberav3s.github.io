@@ -1,15 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Coming Soon</title>
+    <style>
+        /* --- Reset & Base --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>映像ディレクター nagiのポートフォリオサイト (Community)</title>
-    </head>
+        :root {
+            /* Apple-esque Palette: Deep matte blues, no shiny gradients */
+            --bg-color: #050a14;       /* Very dark midnight blue */
+            --text-primary: #f5f5f7;   /* Off-white for readability */
+            --text-secondary: #86868b; /* Muted grey-blue for subtext */
+            --accent-blue: #2997ff;    /* The signature Apple blue */
+            --accent-hover: #0077ed;   /* Slightly darker blue for hover */
+        }
 
-    <body>
-      <div id="root"></div>
-      <script type="module" src="/src/main.tsx"></script>
-    </body>
-  </html>
-  
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center vertically */
+            align-items: center;     /* Center horizontally */
+            text-align: center;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased; /* Critical for Apple-like crisp text */
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* --- Layout Container --- */
+        .container {
+            max-width: 600px;
+            padding: 2rem;
+            animation: fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1); /* Apple's standard ease-out curve */
+        }
+
+        /* --- Typography --- */
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 600; /* Semibold, not ExtraBold */
+            letter-spacing: -0.015em; /* Tight tracking for large text */
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.3rem;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+        }
+
+        /* --- Minimal Badge (Optional) --- */
+        .badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-blue);
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(41, 151, 255, 0.3);
+            padding: 0.4em 1em;
+            border-radius: 999px; /* Pill shape */
+        }
+
+        /* --- Action Button --- */
+        .notify-btn {
+            display: inline-block;
+            text-decoration: none;
+            background-color: var(--accent-blue);
+            color: white;
+            padding: 12px 28px;
+            font-size: 1.05rem;
+            font-weight: 500;
+            border-radius: 999px; /* Iconic pill button */
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .notify-btn:hover {
+            background-color: var(--accent-hover);
+            transform: scale(1.02); /* Extremely subtle grow */
+        }
+
+        /* --- Footer --- */
+        footer {
+            position: absolute;
+            bottom: 2rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.2s ease;
+        }
+
+        footer a:hover {
+            color: var(--accent-blue);
+            text-decoration: underline;
+        }
+
+        /* --- Animation --- */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- Mobile Tweaks --- */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            p { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="container">
+        <div class="badge">In Development</div>
+
+        <h1>Creating the <br>future.</h1>
+
+        <p>I am currently crafting a new portfolio experience. <br>Check back soon for updates.</p>
+
+        <a href="mailto:your-email@example.com" class="notify-btn">Contact Me</a>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Your Name. All rights reserved.</p>
+        <br>
+        <a href="#">LinkedIn</a>
+        <a href="#">Twitter</a>
+        <a href="#">GitHub</a>
+    </footer>
+
+</body>
+</html>
